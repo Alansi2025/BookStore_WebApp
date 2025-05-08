@@ -1,168 +1,200 @@
 import tkinter as tk
-from tkinter import filedialog, messagebox
-from PIL import Image, ImageTk, ImageOps # Added ImageOps for potential padding/bordering if needed
+from tkinter import ttk, filedialog, messagebox
+from PIL import Image, ImageTk, UnidentifiedImageError
 import qrcode
-from pyzbar.pyzbar import decode as decode_qr_code_from_image # Renamed for clarity
+from pyzbar.pyzbar import decode as decode_qr
+import os # For ensuring the save directory exists, if needed.
 
-# Global variables to store PIL Image and PhotoImage objects to prevent garbage collection
-generated_qr_pil_image = None
-generated_qr_tk_image = None
-uploaded_qr_pil_image = None
-uploaded_qr_tk_image = None
+class QRCodeApp:
+    def __init__(self, root_window):
+        self.root = root_window
+        self.root.title("QR Code Genie")
+        # self.root.geometry("650x550") # Optional: set initial size
 
-# --- Core QR Functions ---
+        # Style
+        style = ttk.Style()
+        style.theme_use('clam') # You can try 'alt', 'default', 'classic', 'vista', 'xpnative'
 
-def generate_qr_image(data_to_encode):
-    """Generates a QR code PIL image from the given data."""
-    if not data_to_encode.strip():
-        messagebox.showwarning("Input Error", "Please enter data to generate QR code.")
-        return None
-    try:
-        qr = qrcode.QRCode(
-            version=1, # Keep it simple, auto-adjusts if data is too large
-            error_correction=qrcode.constants.ERROR_CORRECT_L, # Low error correction
-            box_size=10, # Size of each box in the QR code
-            border=4,    # Thickness of the border
-        )
-        qr.add_data(data_to_encode)
-        qr.make(fit=True)
-        img = qr.make_image(fill_color="black", back_color="white")
-        return img
-    except Exception as e:
-        messagebox.showerror("Generation Error", f"Failed to generate QR code: {e}")
-        return None
+        self.notebook = ttk.Notebook(self.root)
 
-def decode_qr_from_file(image_path):
-    """Decodes a QR code from an image file path."""
-    try:
-        img = Image.open(image_path)
-        decoded_objects = decode_qr_code_from_image(img)
-        if decoded_objects:
-            # Assuming one QR code per image for simplicity
-            return decoded_objects[0].data.decode("utf-8")
-        else:
-            return None
-    except Exception as e:
-        messagebox.showerror("Decoding Error", f"Failed to read or decode QR code from image: {e}")
-        return None
+        # --- Generate Tab ---
+        self.generate_tab = ttk.Frame(self.notebook, padding="10")
+        self.notebook.add(self.generate_tab, text='Generate QR Code')
+        self.setup_generate_tab()
 
-# --- GUI Event Handlers ---
+        # --- Decode Tab ---
+        self.decode_tab = ttk.Frame(self.notebook, padding="10")
+        self.notebook.add(self.decode_tab, text='Decode QR Code')
+        self.setup_decode_tab()
 
-def handle_generate_qr_button_click():
-    global generated_qr_pil_image, generated_qr_tk_image # Allow modification of global variables
-    data = entry_data_for_qr.get()
-    img_pil = generate_qr_image(data)
+        self.notebook.pack(expand=True, fill='both', padx=10, pady=10)
 
-    if img_pil:
-        generated_qr_pil_image = img_pil # Store the original PIL image for saving
+        self.generated_qr_pil_image = None # To store PIL Image for display/save
+        self.qr_tk_image = None # For displaying generated QR
+        self.uploaded_image_tk = None # For displaying uploaded QR
+
+    def setup_generate_tab(self):
+        # Input data
+        input_frame = ttk.LabelFrame(self.generate_tab, text="Input", padding="10")
+        input_frame.pack(fill="x", expand=False, pady=5)
+
+        ttk.Label(input_frame, text="Enter data to encode:").pack(side="left", padx=5)
+        self.data_entry = ttk.Entry(input_frame, width=50)
+        self.data_entry.pack(side="left", expand=True, fill="x", padx=5)
+
+        # Generate button
+        self.generate_button = ttk.Button(self.generate_tab, text="✨ Generate QR Code", command=self.generate_qr)
+        self.generate_button.pack(pady=10, fill="x", expand=False)
+
+        # QR Code display
+        qr_display_frame = ttk.LabelFrame(self.generate_tab, text="Generated QR Code", padding="10")
+        qr_display_frame.pack(fill="both", expand=True, pady=5)
         
-        # Create a display version (e.g., resized)
-        display_img = img_pil.resize((200, 200), Image.Resampling.LANCZOS)
-        generated_qr_tk_image = ImageTk.PhotoImage(display_img)
-        
-        qr_display_label.config(image=generated_qr_tk_image, text="") # Display image, clear text
-        qr_display_label.image = generated_qr_tk_image # Keep a reference!
-        
-        download_qr_button.config(state=tk.NORMAL) # Enable download button
-        messagebox.showinfo("Success", "QR Code generated successfully!")
+        self.qr_image_label = ttk.Label(qr_display_frame, text="QR Code will appear here")
+        self.qr_image_label.pack(pady=10, anchor="center")
 
-def handle_download_qr_button_click():
-    global generated_qr_pil_image
-    if generated_qr_pil_image:
-        file_path_to_save = filedialog.asksaveasfilename(
-            defaultextension=".png",
-            filetypes=[("PNG files", "*.png"), ("JPEG files", "*.jpg"), ("All files", "*.*")]
-        )
-        if file_path_to_save:
-            try:
-                generated_qr_pil_image.save(file_path_to_save)
-                messagebox.showinfo("Success", f"QR Code saved to {file_path_to_save}")
-            except Exception as e:
-                messagebox.showerror("Save Error", f"Failed to save QR Code: {e}")
-    else:
-        messagebox.showwarning("No QR Code", "Please generate a QR code first.")
+        # Download button
+        self.download_button = ttk.Button(self.generate_tab, text="💾 Download QR Code (PNG)", command=self.download_qr, state=tk.DISABLED)
+        self.download_button.pack(pady=10, fill="x", expand=False)
 
-def handle_upload_and_decode_button_click():
-    global uploaded_qr_pil_image, uploaded_qr_tk_image, decoded_text_var
-    file_path_to_open = filedialog.askopenfilename(
-        title="Select QR Code Image",
-        filetypes=[("Image files", "*.png *.jpg *.jpeg *.bmp *.gif"), ("All files", "*.*")]
-    )
-    if file_path_to_open:
-        # Display the uploaded image (optional but good for UX)
+    def setup_decode_tab(self):
+        # Upload button
+        self.upload_button = ttk.Button(self.decode_tab, text="📂 Upload QR Code Image", command=self.upload_and_decode_qr)
+        self.upload_button.pack(pady=10, fill="x", expand=False)
+
+        # Image display
+        uploaded_display_frame = ttk.LabelFrame(self.decode_tab, text="Uploaded Image Preview", padding="10")
+        uploaded_display_frame.pack(fill="both", expand=True, pady=5)
+
+        self.uploaded_image_label = ttk.Label(uploaded_display_frame, text="Uploaded image preview will appear here")
+        self.uploaded_image_label.pack(pady=5, anchor="center")
+        
+        # Decoded data display
+        decoded_data_frame = ttk.LabelFrame(self.decode_tab, text="Decoded Information", padding="10")
+        decoded_data_frame.pack(fill="x", expand=False, pady=5)
+
+        self.decoded_text_label = ttk.Label(decoded_data_frame, text="Decoded data:")
+        self.decoded_text_label.pack(anchor="w", pady=(0,5))
+        
+        self.decoded_text_area = tk.Text(decoded_data_frame, height=6, width=60, wrap=tk.WORD, relief=tk.SOLID, borderwidth=1)
+        self.decoded_text_area.pack(fill="x", expand=True)
+        self.decoded_text_area.config(state=tk.DISABLED) # Start as disabled
+
+    def _display_image_in_label(self, pil_image, label_widget, max_size=(250, 250)):
+        display_img = pil_image.copy()
+        display_img.thumbnail(max_size, Image.Resampling.LANCZOS)
+        
+        # Store the PhotoImage as an attribute of the label or the class
+        # to prevent it from being garbage collected.
+        img_tk = ImageTk.PhotoImage(display_img)
+        label_widget.config(image=img_tk, text="")
+        label_widget.image = img_tk # Keep a reference!
+        return img_tk
+
+
+    def generate_qr(self):
+        data = self.data_entry.get()
+        if not data:
+            messagebox.showwarning("Input Error", "Oops! Please enter some data to generate a QR code.")
+            return
+
         try:
-            uploaded_qr_pil_image = Image.open(file_path_to_open)
-            display_img = uploaded_qr_pil_image.resize((200, 200), Image.Resampling.LANCZOS)
-            uploaded_qr_tk_image = ImageTk.PhotoImage(display_img)
+            qr = qrcode.QRCode(
+                version=None, # Auto-detect version
+                error_correction=qrcode.constants.ERROR_CORRECT_M, # Medium error correction
+                box_size=10,
+                border=4,
+            )
+            qr.add_data(data)
+            qr.make(fit=True)
+
+            self.generated_qr_pil_image = qr.make_image(fill_color="black", back_color="white").convert('RGB')
             
-            uploaded_image_display_label.config(image=uploaded_qr_tk_image, text="")
-            uploaded_image_display_label.image = uploaded_qr_tk_image # Keep reference
+            self.qr_tk_image = self._display_image_in_label(self.generated_qr_pil_image, self.qr_image_label, (300,300))
+            
+            self.download_button.config(state=tk.NORMAL)
+            messagebox.showinfo("Success!", "QR Code generated successfully! You can now download it.")
+
         except Exception as e:
-            messagebox.showwarning("Image Display Error", f"Could not display uploaded image: {e}")
-            uploaded_image_display_label.config(image=None, text="Error displaying image") # Clear
-            uploaded_image_display_label.image = None
+            messagebox.showerror("Error", f"Oh no! Failed to generate QR Code: {e}")
+            self.download_button.config(state=tk.DISABLED)
+            self.qr_image_label.config(image=None, text="QR Code generation failed.")
+            self.qr_image_label.image = None
 
-        # Decode the QR code
-        decoded_data = decode_qr_from_file(file_path_to_open)
-        if decoded_data:
-            decoded_text_var.set(decoded_data)
-            messagebox.showinfo("Success", "QR Code decoded successfully!")
-        else:
-            decoded_text_var.set("No QR code found or could not decode.")
-            # messagebox.showwarning might be too intrusive if no QR is found, label update is enough.
 
-# --- GUI Setup ---
-root = tk.Tk()
-root.title("QR Code Utility")
+    def download_qr(self):
+        if not self.generated_qr_pil_image:
+            messagebox.showerror("Error", "Hmm, there's no QR Code generated to download yet.")
+            return
 
-# Main frame for padding
-main_app_frame = tk.Frame(root, padx=15, pady=15)
-main_app_frame.pack(expand=True, fill=tk.BOTH)
+        file_path = filedialog.asksaveasfilename(
+            defaultextension=".png",
+            filetypes=[("PNG files", "*.png"), ("All files", "*.*")],
+            title="Save QR Code As",
+            initialfile="qrcode.png" # Default filename
+        )
+        if file_path:
+            try:
+                # Ensure directory exists (optional, filedialog usually handles this)
+                # os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                self.generated_qr_pil_image.save(file_path)
+                messagebox.showinfo("Success!", f"QR Code saved to:\n{file_path}")
+            except Exception as e:
+                messagebox.showerror("Error", f"Rats! Failed to save QR Code: {e}")
 
-# --- Generation Section ---
-generation_frame = tk.LabelFrame(main_app_frame, text="Generate QR Code", padx=10, pady=10)
-generation_frame.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=10, pady=5)
+    def upload_and_decode_qr(self):
+        file_path = filedialog.askopenfilename(
+            title="Select QR Code Image",
+            filetypes=[("Image files", "*.png *.jpg *.jpeg *.bmp *.gif"), ("All files", "*.*")]
+        )
+        if not file_path:
+            return # User cancelled
 
-tk.Label(generation_frame, text="Enter data:").pack(anchor=tk.W, pady=(0,5))
-entry_data_for_qr = tk.Entry(generation_frame, width=45)
-entry_data_for_qr.pack(fill=tk.X, pady=(0,10))
+        try:
+            img = Image.open(file_path)
+            
+            # Display uploaded image
+            self.uploaded_image_tk = self._display_image_in_label(img, self.uploaded_image_label, (250,250))
 
-generate_qr_button = tk.Button(generation_frame, text="Generate QR Code", command=handle_generate_qr_button_click)
-generate_qr_button.pack(pady=(0,10))
+            # Decode
+            decoded_objects = decode_qr(img)
 
-qr_display_label = tk.Label(generation_frame, text="Generated QR will appear here", relief=tk.SUNKEN, width=28, height=12, background="white")
-qr_display_label.pack(pady=(0,10), ipadx=5, ipady=5) # ipadx/y give some size to the sunken border
+            self.decoded_text_area.config(state=tk.NORMAL)
+            self.decoded_text_area.delete(1.0, tk.END)
+            if decoded_objects:
+                all_decoded_data = []
+                for i, obj in enumerate(decoded_objects):
+                    decoded_data = obj.data.decode('utf-8', errors='replace') # Handle potential decoding errors
+                    all_decoded_data.append(f"QR Code #{i+1} (Type: {obj.type}):\n{decoded_data}\n---")
+                self.decoded_text_area.insert(tk.END, "\n".join(all_decoded_data).strip("\n---"))
+                messagebox.showinfo("Success!", "QR Code(s) decoded successfully!")
+            else:
+                self.decoded_text_area.insert(tk.END, "No QR Code found in the image, or it could not be decoded.")
+                messagebox.showwarning("Not Found", "Couldn't find a QR Code in the selected image, or it's unreadable.")
+            self.decoded_text_area.config(state=tk.DISABLED)
 
-download_qr_button = tk.Button(generation_frame, text="Download QR Code", command=handle_download_qr_button_click, state=tk.DISABLED)
-download_qr_button.pack()
+        except UnidentifiedImageError:
+            messagebox.showerror("Error", f"Cannot identify image file. Is it a valid image?\nFile: {file_path}")
+            self._clear_decode_outputs()
+        except FileNotFoundError:
+            messagebox.showerror("Error", f"Oops, file not found: {file_path}")
+            self._clear_decode_outputs()
+        except Exception as e:
+            messagebox.showerror("Error", f"An error occurred while processing the image: {e}")
+            self._clear_decode_outputs(error_message=str(e))
 
-# --- Decoding Section ---
-decoding_frame = tk.LabelFrame(main_app_frame, text="Decode QR Code", padx=10, pady=10)
-decoding_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=10, pady=5)
-
-upload_qr_button = tk.Button(decoding_frame, text="Upload QR Image to Decode", command=handle_upload_and_decode_button_click)
-upload_qr_button.pack(pady=(0,10))
-
-uploaded_image_display_label = tk.Label(decoding_frame, text="Uploaded image will appear here", relief=tk.SUNKEN, width=28, height=12, background="white")
-uploaded_image_display_label.pack(pady=(0,10), ipadx=5, ipady=5)
-
-tk.Label(decoding_frame, text="Decoded data:").pack(anchor=tk.W, pady=(5,5))
-decoded_text_var = tk.StringVar()
-decoded_text_var.set("...") # Initial placeholder text
-decoded_result_display_label = tk.Label(
-    decoding_frame, 
-    textvariable=decoded_text_var, 
-    wraplength=300, # Adjust as needed for your typical data length
-    relief=tk.GROOVE, 
-    height=5, # Approx lines of text
-    anchor=tk.NW, # Align text to top-left
-    justify=tk.LEFT,
-    padx=5, pady=5
-)
-decoded_result_display_label.pack(fill=tk.X, expand=False, pady=(0,10))
+    def _clear_decode_outputs(self, error_message=None):
+        self.uploaded_image_label.config(image=None, text="Uploaded image preview will appear here")
+        self.uploaded_image_label.image = None
+        self.decoded_text_area.config(state=tk.NORMAL)
+        self.decoded_text_area.delete(1.0, tk.END)
+        if error_message:
+            self.decoded_text_area.insert(tk.END, f"Error: {error_message}")
+        self.decoded_text_area.config(state=tk.DISABLED)
 
 
 if __name__ == "__main__":
-    # Set a minimum size for the window
-    root.minsize(650, 450) # Adjust as you see fit
-    root.mainloop()
+    main_window = tk.Tk()
+    app = QRCodeApp(main_window)
+    main_window.mainloop()
+
