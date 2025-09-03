@@ -9,7 +9,7 @@
     "price": "451$",
     "description": "Follows the adventures of Goku from his childhood through adulthood as he trains in martial arts and explores the world in search of the seven wish-granting orbs known as the Dragon Balls.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/61GXCcTJxGL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81VRGZtP2mL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46813" },
@@ -21,7 +21,7 @@
     "price": "552$",
     "description": "The adventure of Monkey D. Luffy, a boy whose body gained the properties of rubber after unintentionally eating a Devil Fruit, and his diverse crew of pirates, named the Straw Hat Pirates.",
     "rating": 4.9,
-    "image_url": "https://m.media-amazon.com/images/I/71pM-Z-T7IL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81w1A8P9q6L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46814" },
@@ -33,7 +33,7 @@
     "price": "499$",
     "description": "Tells the story of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/71OqVPj4J9L._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91xK7V3qlDL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46815" },
@@ -45,7 +45,7 @@
     "price": "423$",
     "description": "The story of Ichigo Kurosaki, a teenager with the ability to see ghosts, who obtains the powers of a Soul Reaper and takes on the duties of defending humans from evil spirits.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/71HRPElN2bL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46816" },
@@ -57,7 +57,7 @@
     "price": "601$",
     "description": "Set in a world where humanity resides within three enormous walls that protect them from the gigantic man-eating humanoids referred to as Titans.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/812hS9pb9aL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81YfDxDOPbL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46817" },
@@ -69,7 +69,7 @@
     "price": "585$",
     "description": "In a world where people with superpowers known as 'Quirks' are the norm, a boy born without a Quirk dreams of becoming a superhero.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/81fCzl5vTtL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91tH9r8E9WL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46818" },
@@ -81,7 +81,7 @@
     "price": "655$",
     "description": "A young boy becomes a demon slayer to find a cure for his sister, who has been turned into a demon, and to avenge his family.",
     "rating": 4.9,
-    "image_url": "https://m.media-amazon.com/images/I/710Nb1Fd7xL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91W0J+rxGgL.jpg"
   },
 
   {
@@ -94,7 +94,7 @@
     "price": "350$",
     "description": "A story of the fabulously wealthy Jay Gatsby and his new-found love for the beautiful Daisy Buchanan, of lavish parties on Long Island at a time when 'gin was the national drink and sex the national obsession'.",
     "rating": 4.2,
-    "image_url": "https://m.media-amazon.com/images/I/81ShirsP9zL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81af+MCATTL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4681a" },
@@ -106,7 +106,7 @@
     "price": "321$",
     "description": "A classic novel about a young girl's coming-of-age in a Southern town and the moral crisis that rocks it, through the eyes of Scout Finch.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/81gepf1eMqL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81OthjkJBuL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4681b" },
@@ -118,7 +118,7 @@
     "price": "315$",
     "description": "A dystopian novel set in Airstrip One, a province of the superstate Oceania in a world of perpetual war, omnipresent government surveillance, and public manipulation.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/61yaS3+6PSL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71kxa1-0mfL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4681c" },
@@ -130,7 +130,7 @@
     "price": "305$",
     "description": "A romantic novel that charts the emotional development of the protagonist, Elizabeth Bennet, who learns the error of making hasty judgments.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/91fDvMK+aEL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81UwzA5ArHL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4681d" },
@@ -142,7 +142,7 @@
     "price": "348$",
     "description": "The story of Holden Caulfield's experiences in New York City in the days following his expulsion from Pencey Prep, a prep school in Pennsylvania.",
     "rating": 4.1,
-    "image_url": "https://m.media-amazon.com/images/I/7108sdEUEGL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71HMyqG6MRL.jpg"
   },
 
   {
@@ -155,7 +155,7 @@
     "price": "755$",
     "description": "A survey of the history of humankind, from the Stone Age to the twenty-first century, focusing on key revolutions in human history.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/713jIoMO3UL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/713jIoMO3UL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4681f" },
@@ -167,7 +167,7 @@
     "price": "699$",
     "description": "A memoir detailing the author's journey from growing up in a survivalist family in rural Idaho to earning a PhD from Cambridge University.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/71N2HZwRo3L._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81WojUxbbFL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46820" },
@@ -179,7 +179,7 @@
     "price": "722$",
     "description": "The memoir of former First Lady of the United States Michelle Obama, chronicling her life from childhood to her time in the White House.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/819YLKVUOhL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46821" },
@@ -191,7 +191,7 @@
     "price": "682$",
     "description": "Explores the science behind why we do what we do, and how we can change our habits for the better.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/71vN6HJvddL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71cTRa3z87L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46822" },
@@ -203,7 +203,7 @@
     "price": "711$",
     "description": "Summarizes research that the author conducted over decades, explaining the two systems that drive the way we think.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/71oUdhxUkgL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71aG+xDKSYL.jpg"
   },
 
   {
@@ -216,7 +216,7 @@
     "price": "555$",
     "description": "A thriller about a woman who disappears on her fifth wedding anniversary, leaving her husband as the primary suspect.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/61Sx28fdUoL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81AfzrDRYTL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46824" },
@@ -228,7 +228,7 @@
     "price": "591$",
     "description": "A mystery thriller that follows symbologist Robert Langdon and cryptologist Sophie Neveu as they investigate a murder in Paris's Louvre Museum.",
     "rating": 4.3,
-    "image_url": "https://m.media-amazon.com/images/I/71y4X5150dL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81l3rZK4lnL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46825" },
@@ -240,7 +240,7 @@
     "price": "543$",
     "description": "A tale of three mothers of first-graders whose seemingly perfect lives unravel to the point of murder.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/71Wfs7-fvkL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91Y0C7CjL4L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46826" },
@@ -252,7 +252,7 @@
     "price": "492$",
     "description": "Ten strangers are lured to an isolated island, only to be accused of past crimes and picked off one by one.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/71RGiu1YwDL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91FZlWvRyyL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46827" },
@@ -264,7 +264,7 @@
     "price": "599$",
     "description": "A journalist and a young computer hacker team up to investigate the disappearance of a wealthy industrialist's niece from 40 years ago.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/81Z3+FbTMvL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81pBPX4cT6L.jpg"
   },
 
   {
@@ -277,7 +277,7 @@
     "price": "855$",
     "description": "A science fiction epic set in the distant future amidst a feudal interstellar society in which various noble houses control planetary fiefs.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/81Ua99CURsL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91W0J+rxGgL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46829" },
@@ -289,7 +289,7 @@
     "price": "823$",
     "description": "A washed-up computer hacker is hired by a mysterious employer to pull off the ultimate hack in this seminal cyberpunk novel.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/81m-rJnUdRL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81Fx6QyVwCL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4682a" },
@@ -301,7 +301,7 @@
     "price": "811$",
     "description": "The story of a group of scientists who attempt to preserve humanity's knowledge and shorten a predicted dark age.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/81LT+V9G4IL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81jw8x90lNL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4682b" },
@@ -313,7 +313,7 @@
     "price": "794$",
     "description": "In a futuristic Los Angeles, a pizza delivery guy who is also a hacker and samurai swordsman gets entangled in a plot involving a new computer virus.",
     "rating": 4.3,
-    "image_url": "https://m.media-amazon.com/images/I/81kAwx7s0-L._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81rxGSw5XcL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4682c" },
@@ -325,7 +325,7 @@
     "price": "788$",
     "description": "An astronaut is mistakenly presumed dead and left behind on Mars, and must use his ingenuity to survive and find a way to signal to Earth that he is alive.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/91pw0THBwBL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91z3h8uCszL.jpg"
   },
 
   {
@@ -338,7 +338,7 @@
     "price": "456$",
     "description": "A poignant love story about a young couple who are separated by social differences but find their way back to each other years later.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/81QuSsdtynL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81yFXT2a-UL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4682e" },
@@ -350,7 +350,7 @@
     "price": "433$",
     "description": "A young woman forms an unlikely bond with a recently-paralyzed man she's taking care of.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/519HPhvcBGL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81nzxODnaJL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4682f" },
@@ -362,7 +362,7 @@
     "price": "488$",
     "description": "A former World War II nurse finds herself transported back in time to 18th-century Scotland, where she falls for a dashing Highland warrior.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/51oGU5pdSZL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91aVx8fYZJL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46830" },
@@ -374,7 +374,7 @@
     "price": "522$",
     "description": "A love story about a man with a genetic disorder that causes him to time travel unpredictably, and the woman who tries to build a life with him.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/713kKe4vUHL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81bRcp0V2QL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46831" },
@@ -386,7 +386,7 @@
     "price": "477$",
     "description": "A teenage girl risks everything when she falls in love with a vampire.",
     "rating": 3.9,
-    "image_url": "https://m.media-amazon.com/images/I/41o83BCBP6L._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81UtLzF6z9L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46832" },
@@ -398,7 +398,7 @@
     "price": "411$",
     "description": "A story about a young shepherd named Santiago who travels from his homeland in Spain to the Egyptian desert in search of a treasure buried near the Pyramids.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/617lxveUjYL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71aFt4+OTOL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46833" },
@@ -410,7 +410,7 @@
     "price": "444$",
     "description": "A young man who survives a disaster at sea is hurtled into an epic journey of adventure and discovery. While cast away, he forms an unexpected connection with another survivor: a fearsome Bengal tiger.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/816NlEQFMOL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81t2CVWEsUL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46834" },
@@ -422,7 +422,7 @@
     "price": "399$",
     "description": "A dystopian novel that explores a futuristic World State of genetically modified citizens and an intelligence-based social hierarchy.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/51CWnp7rtlL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81dH4sxG5wL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46835" },
@@ -434,7 +434,7 @@
     "price": "466$",
     "description": "A powerful story of friendship, family, and redemption set against the devastating backdrop of the history of Afghanistan over the last thirty years.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/81IzbD2IiIL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71jZ5iJwHnL.jpg"
   },
 
   {
@@ -447,7 +447,7 @@
     "price": "888$",
     "description": "An easy and proven way to build good habits and break bad ones, offering a framework for improving every day.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/81F90H7hnML._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91bYsX41DVL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46837" },
@@ -459,7 +459,7 @@
     "price": "866$",
     "description": "A psychiatrist's memoir of his life in Nazi death camps and its lessons for spiritual survival.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/51r59WXKoEL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71Y0oB8Hk3L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46838" },
@@ -471,7 +471,7 @@
     "price": "844$",
     "description": "Argues that we dramatically undervalue introverts and shows how much we lose in doing so.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/71xEUuZsUoL._AC_UL480_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71q2rRr1zNL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46839" },
@@ -483,7 +483,7 @@
     "price": "877$",
     "description": "Examines the factors that contribute to high levels of success, arguing that the 'self-made man' is a myth.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/61XsLQzCkRL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81UwbE4G5xL.jpg"
   },
 
   {
@@ -496,7 +496,7 @@
     "price": "622$",
     "description": "A shocking psychological thriller of a woman’s act of violence against her husband—and of the therapist obsessed with uncovering her motive.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/61WpWzp3sSL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81eB+7+CkUL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4683b" },
@@ -508,7 +508,7 @@
     "price": "611$",
     "description": "A detective and his partner investigate the murder of a twelve-year-old girl in a small town in Ireland, a case that has eerie similarities to the detective's own past.",
     "rating": 4.3,
-    "image_url": "https://m.media-amazon.com/images/I/71OjMeKpdmL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91jq2r5WL8L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4683c" },
@@ -520,7 +520,7 @@
     "price": "633$",
     "description": "An agoraphobic woman living alone in New York begins spying on her new neighbors, only to witness a disturbing act of violence.",
     "rating": 4.2,
-    "image_url": "https://m.media-amazon.com/images/I/7196sTeTolL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81h2gWPTYJL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4683d" },
@@ -532,7 +532,7 @@
     "price": "644$",
     "description": "Defense attorney Mickey Haller and LAPD Detective Harry Bosch team up to prove the innocence of a man who has been in prison for 24 years for a child murder.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/71cEpnlLePL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81BHWd1tHfL.jpg"
   },
 
   {
@@ -545,7 +545,7 @@
     "price": "911$",
     "description": "In a bleak future, a young man embarks on a virtual reality treasure hunt to win control of a vast digital universe and a massive fortune.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/91Be3OR3f8L._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81p5n3FFSFL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4683f" },
@@ -557,7 +557,7 @@
     "price": "922$",
     "description": "A gifted young boy is sent to an advanced military school in space to prepare for a future invasion by a hostile alien race.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/71RoGB0yKOL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81f8W7cPfnL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46840" },
@@ -569,7 +569,7 @@
     "price": "955$",
     "description": "On the world of Hyperion, seven pilgrims set forth on a voyage to the Time Tombs, each with a desperate hope and a terrible secret.",
     "rating": 4.5,
-    "image_url": "https://m.media-amazon.com/images/I/61JoRM15EbL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91qv2IWRDML.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46841" },
@@ -581,7 +581,7 @@
     "price": "933$",
     "description": "A human ambassador is sent to the alien world of Gethen, a planet whose inhabitants can change their gender, to persuade them to join an interstellar confederation.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/81zfL1XTAML._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81X8sM1Fg2L.jpg"
   },
 
   {
@@ -594,7 +594,7 @@
     "price": "511$",
     "description": "The First Son of the United States falls in love with a British prince, and their secret romance could upend two nations.",
     "rating": 4.6,
-    "image_url": "https://m.media-amazon.com/images/I/71pSRcqtzbL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81t0j+5p+ZL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46843" },
@@ -606,7 +606,7 @@
     "price": "533$",
     "description": "Two rival authors with writer's block make a deal to swap genres for the summer, leading to unexpected romance.",
     "rating": 4.4,
-    "image_url": "https://m.media-amazon.com/images/I/81+nXljihzL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81ZfY7n-4gL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46844" },
@@ -618,7 +618,7 @@
     "price": "566$",
     "description": "A young woman's new relationship is threatened when her first love reappears, forcing her to confront her past.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/91CqNElQaKL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81s0B6NYXML.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46845" },
@@ -630,7 +630,7 @@
     "price": "577$",
     "description": "Two best friends with nothing in common except their annual summer vacation try to figure out what went wrong on their last trip.",
     "rating": 4.3,
-    "image_url": "https://m.media-amazon.com/images/I/71YdsKNLPAL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81hLB1GfQ4L.jpg"
   },
 
   {
@@ -643,7 +643,7 @@
     "price": "950$",
     "description": "A collection of Leonardo da Vinci's drawings, ideas, and observations on art, science, and invention, offering a glimpse into the mind of a genius.",
     "rating": 4.9,
-    "image_url": "https://m.media-amazon.com/images/I/51iMoqHfxUL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/71A-8mJ-g-L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46847" },
@@ -655,7 +655,7 @@
     "price": "450$",
     "description": "The personal diary of Anne Frank, a Jewish girl hiding from the Nazis in Amsterdam during World War II. A powerful testament to the human spirit.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/81lZ-9E4F-S._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/81xTRD2SgEL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46848" },
@@ -667,7 +667,7 @@
     "price": "620$",
     "description": "A series of personal writings by the Roman Emperor Marcus Aurelius, recording his private notes to himself and ideas on Stoic philosophy.",
     "rating": 4.9,
-    "image_url": "https://m.media-amazon.com/images/I/712J6JG+8CL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/716hJd2nSgL.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a46849" },
@@ -679,7 +679,7 @@
     "price": "890$",
     "description": "The private journals and notebooks of Charles Darwin, where he first formulated his groundbreaking theories on evolution and natural selection.",
     "rating": 4.7,
-    "image_url": "https://m.media-amazon.com/images/I/7117q1-2LOL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/91+t+t6S69L.jpg"
   },
   {
     "_id": { "$oid": "68b013a2b30243ac60a4684a" },
@@ -691,6 +691,6 @@
     "price": "910$",
     "description": "Marie Curie's groundbreaking doctoral thesis and research notes on radioactivity, which laid the foundation for much of modern physics and chemistry.",
     "rating": 4.8,
-    "image_url": "https://m.media-amazon.com/images/I/41R6awl2LEL._AC_UY327_FMwebp_QL65_.jpg"
+    "image_url": "https://m.media-amazon.com/images/I/51g-o1nKqgL.jpg"
   }
 ]
