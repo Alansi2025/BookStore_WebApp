@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Bookstore</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <script src="static/script.js"></script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header>
+    <div class="navbar">
+      <!-- Logo -->
+      <a href="/" class="logo">
+        📚 BookStore
+      </a>
+
+      <!-- Search + Filters -->
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search books...">
+        <button id="search-btn" type="button" title="Search">🔍</button>
+      </div>
+
+      <!-- Icons -->
+      <div class="icons">
+        <button id="theme-toggle" type="button" title="Toggle theme">🌗</button>
+        <select id="sort">
+          <option value="recent">Sort by: Recent</option>
+          <option value="title">Sort by: Title</option>
+          <option value="author">Sort by: Author</option>
+        </select>
+        <button id="toggleLayout" type="button" title="Toggle layout">🔲</button>
+        <button type="button" title="Cart">🛒</button>
+      </div>
+    </div>
+    <div navbar>
+      
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Permanent Left Sidebar Filters -->
+    <aside id="filters-panel" class="filters-panel left-sidebar" aria-label="Advanced Filters" tabindex="-1">
+      <h2>Advanced Filters</h2>
+      <form id="filters-form" autocomplete="off">
+        <!-- Genre Filter -->
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre">
+          <option value="">All</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="science fantasy">Science Fantasy</option>
+          <option value="romance">Romance</option>
+          <option value="non-fantasy">Non-Fiction</option>
+          <option value="speculative">Speculative</option>
+        </select>
+
+        <!-- Year Filter -->
+        <label for="year">Published After:</label>
+        <input type="number" id="year" name="year" placeholder="e.g. 2015" min="0" max="2100">
+
+        <!-- Type Filter -->
+        <label for="type">Type:</label>
+        <select id="type" name="type">
+          <option value="">All</option>
+          <option value="book">Book</option>
+          <option value="comics">Comics</option>
+        </select>
+
+        <button type="button" id="apply-filters">Apply Filters</button>
+      </form>
+    </aside>
+    <main id="main-content">
+      <div id="results-count" aria-live="polite"></div>
+      <section id="books-grid" class="book-grid"></section>
+    </main>
+  </div>
+
+  <!-- Book Details Modal -->
+<div id="book-modal" class="modal-overlay" style="display:none;">
+  <div class="modal-content">
+    <button class="modal-close" id="modal-close">&times;</button>
+    <div class="modal-body">
+      <div class="modal-image">
+        <img id="modal-book-image" src="" alt="Book Cover">
+      </div>
+      <div class="modal-info">
+        <span id="modal-genre" class="modal-genre">GENRE</span>
+        <h2 id="modal-title">Book Title</h2>
+        <p id="modal-author" class="modal-author">by Author</p>
+        <div class="modal-rating">
+          <span id="modal-stars">⭐⭐⭐⭐</span>
+          <span id="modal-rating-value">4.5</span>
+          <span id="modal-review-count">(100 reviews)</span>
+        </div>
+        <p id="modal-description" class="modal-description">Book description goes here.</p>
+        <div class="modal-meta">
+          <div>
+            <span class="meta-label">Pages:</span>
+            <span id="modal-pages">300</span>
+          </div>
+          <div>
+            <span class="meta-label">Published:</span>
+            <span id="modal-year">2020</span>
+          </div>
+          <div>
+            <span class="meta-label">ISBN:</span>
+            <span id="modal-isbn">9780000000100</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button id="modal-buy" class="modal-buy">Buy for <span id="modal-price">$9.99</span></button>
+          <button id="modal-sample" class="modal-sample">Read Sample</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
