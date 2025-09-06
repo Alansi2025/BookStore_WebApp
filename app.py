@@ -11,7 +11,6 @@ from werkzeug.security import check_password_hash, generate_password_hash
 # ---------------------------
 # App Initialization & Configuration
 # ---------------------------
-# CORRECTED: Configure Flask to serve static files from the 'static' folder
 app = Flask(__name__, static_folder='static', static_url_path='')
 CORS(app)
 
@@ -87,12 +86,11 @@ def check_db_connection():
 # Routes
 # ---------------------------
 
-# CORRECTED: This route now correctly serves your single 'index.html' file from the 'static' folder
 @app.route("/")
 def index():
     return app.send_static_file('index.html')
 
-# --- LOGIN ROUTE ---
+# --- AUTH ROUTE ---
 @app.route("/login", methods=["POST"])
 def login():
     auth = request.json
@@ -142,9 +140,6 @@ def get_single_book(book_id):
     
     return jsonify(serialize_book(book)), 200
 
-# ---------------------------
-# Run Flask App
-# ---------------------------
 if __name__ == "__main__":
     if client is None:
         print("🚨 Cannot start Flask server, MongoDB connection is not available.")
