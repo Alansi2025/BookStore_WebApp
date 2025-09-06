@@ -1,9 +1,9 @@
-BookStream: A Modern Bookstore Web Application
+# BookStream: A Modern Bookstore Web Application
 A dynamic, Netflix-style web application for browsing a book collection, built with a Flask and MongoDB backend.
 
 This project is a full-stack web application that serves as an online bookstore. It features a secure, token-based RESTful API built with Python and Flask, a NoSQL database using MongoDB, and a sleek, responsive frontend powered by Tailwind CSS and vanilla JavaScript.
 
-Features ✨
+# Features ✨
 RESTful API: A robust backend built with Flask to manage book data.
 
 Secure Authentication: Uses JSON Web Tokens (JWT) to protect API routes, ensuring only authorized users can access data.
@@ -18,14 +18,14 @@ Dark/Light Mode: A theme-toggle feature for user comfort.
 
 NoSQL Database: Utilizes MongoDB for flexible and scalable data storage.
 
-Tech Stack 🛠️
+# Tech Stack 🛠️
 Backend: Python, Flask, PyMongo, PyJWT
 
 Frontend: HTML, CSS, JavaScript, Tailwind CSS
 
 Database: MongoDB
 
-Project Structure 📂
+# Project Structure 📂
 For the application to run correctly, your project must follow this folder structure:
 
 /bookstore-project/
@@ -35,7 +35,7 @@ For the application to run correctly, your project must follow this folder struc
 ├── books.books.json
 └── requirements.txt
 
-Setup and Installation 🚀
+# Setup and Installation 🚀
 Follow these steps to get the project up and running on your local machine.
 
 1. Prerequisites
@@ -70,7 +70,7 @@ PyJWT
 werkzeug
 flask-cors
 
-Now, run the installation command:
+# Now, run the installation command:
 
 pip install -r requirements.txt
 
@@ -92,7 +92,7 @@ You should see a message indicating a successful connection to MongoDB.
 b. Open the application in your browser:
 Navigate to http://127.0.0.1:5000. The website should load and display the book carousels.
 
-API Endpoints 📖
+# API Endpoints 📖
 The Flask API provides the following endpoints. All routes except /login require a valid JWT in the Authorization header.
 
 POST /login
