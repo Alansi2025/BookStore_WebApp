@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discover Books | BookStream</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .dark body { background-color: #0f172a; color: #f8fafc; }
+    .book-card-img {
+        transition: transform 0.3s ease-in-out;
+    }
+    .book-card:hover .book-card-img {
+        transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="antialiased bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="index.html" class="text-2xl font-extrabold text-blue-500">BookStream</a>
+      <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold">
+        <a href="index.html" class="hover:text-blue-500">Home</a>
+        <a href="search.html" class="hover:text-blue-500">Search</a>
+        <a href="library.html" class="hover:text-blue-500">My Library</a>
+        <a href="new-releases.html" class="text-blue-500">Discover</a>
+        <a href="about.html" class="hover:text-blue-500">About</a>
+      </nav>
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" type="button" title="Toggle theme" class="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg id="theme-icon-light" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+    
+    <!-- New in Sci-Fi Section -->
+    <section>
+      <h2 class="text-3xl font-extrabold mb-6">New in Science Fiction</h2>
+      <div id="scifi-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <p class="col-span-full text-center text-slate-500">Loading Sci-Fi books...</p>
+      </div>
+    </section>
+
+    <!-- Author Spotlight Section -->
+    <section>
+      <h2 class="text-3xl font-extrabold mb-6">Author Spotlight: Isaac Asimov</h2>
+      <div id="author-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+         <p class="col-span-full text-center text-slate-500">Loading featured author...</p>
+      </div>
+    </section>
+
+    <!-- For You: Discover Section -->
+    <section>
+      <h2 class="text-3xl font-extrabold mb-6">For You: Discover Something New</h2>
+      <div id="discover-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+         <p class="col-span-full text-center text-slate-500">Finding hidden gems...</p>
+      </div>
+    </section>
+
+  </main>
+  
+  <!-- Footer -->
+  <footer class="bg-slate-100 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 mt-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1">
+          <h3 class="text-2xl font-extrabold text-blue-500 mb-2">BookStream</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2025. All Rights Reserved.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Navigate</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+            <li><a href="index.html" class="hover:text-blue-500">Home</a></li>
+            <li><a href="search.html" class="hover:text-blue-500">Search</a></li>
+            <li><a href="library.html" class="hover:text-blue-500">My Library</a></li>
+            <li><a href="new-releases.html" class="hover:text-blue-500">Discover</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">About</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+            <li><a href="about.html" class="hover:text-blue-500">About Us</a></li>
+            <li><a href="about.html" class="hover:text-blue-500">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Connect</h4>
+          <div class="flex space-x-4">
+             <a href="#" class="text-slate-500 hover:text-blue-500"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg></a>
+             <a href="#" class="text-slate-500 hover:text-blue-500"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 9,21.5C9.08,21.5 9.12,21.45 9.12,21.37V19.35C7.2,19.72 6.7,18.55 6.55,18.05C6.45,17.75 6,17.15 5.5,16.9C5,16.65 4.5,16.2 5.5,16.2C6.4,16.2 6.8,17.1 7,17.35C7.9,18.85 9.5,18.4 10.1,18.15C10.2,17.5 10.45,17.1 10.7,16.85C8.35,16.6 5.85,15.6 5.85,11.95C5.85,10.85 6.2,9.95 6.8,9.25C6.7,9 6.4,8.1 6.9,6.7C6.9,6.7 7.75,6.45 9.1,7.4C9.9,7.2 10.75,7.05 11.6,7.05C12.45,7.05 13.3,7.2 14.1,7.4C15.45,6.45 16.3,6.7 16.3,6.7C16.8,8.1 16.5,9 16.4,9.25C17,9.95 17.35,10.85 17.35,11.95C17.35,15.6 14.85,16.6 12.5,16.85C12.85,17.15 13.15,17.75 13.15,18.6V21.37C13.15,21.45 13.2,21.5 13.28,21.5C17.41,20.17 20.28,16.42 20.28,12A10,10 0 0,0 12,2Z" /></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- THEME TOGGLE SCRIPT ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        const html = document.documentElement;
+
+        const applyTheme = () => {
+            const savedTheme = localStorage.getItem('theme');
+            const isDark = savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            
+            html.classList.toggle('dark', isDark);
+            lightIcon?.classList.toggle('hidden', isDark);
+            darkIcon?.classList.toggle('hidden', !isDark);
+        };
+
+        themeToggleBtn?.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            lightIcon?.classList.toggle('hidden', isDark);
+            darkIcon?.classList.toggle('hidden', !isDark);
+        });
+
+        applyTheme();
+
+        // --- GOOGLE BOOKS API SCRIPT ---
+        const GOOGLE_BOOKS_API_URL = 'https://www.googleapis.com/books/v1/volumes';
+
+        const fetchBooks = async (query, orderBy = 'relevance') => {
+            try {
+                const response = await fetch(`${GOOGLE_BOOKS_API_URL}?q=${encodeURIComponent(query)}&orderBy=${orderBy}&maxResults=12`);
+                if (!response.ok) throw new Error('API request failed');
+                const data = await response.json();
+                return data.items || [];
+            } catch (error) {
+                console.error(`Failed to fetch books for query "${query}":`, error);
+                return [];
+            }
+        };
+        
+        const renderBooks = (elementId, books) => {
+            const container = document.getElementById(elementId);
+            if (!container) return;
+            
+            if (books.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-slate-500">Could not find any books for this category.</p>`;
+                return;
+            }
+
+            container.innerHTML = books.map(book => {
+                const info = book.volumeInfo;
+                const id = book.id;
+                const title = info.title ?? 'No Title';
+                const author = info.authors ? info.authors[0] : 'Unknown Author';
+                const cover = info.imageLinks?.thumbnail ?? 'https://placehold.co/128x192/1e293b/f8fafc?text=No+Cover';
+                
+                const bookData = { id, title, author, cover };
+
+                return `
+                    <div class="book-card text-center group cursor-pointer">
+                        <div class="overflow-hidden rounded-md shadow-lg">
+                           <img src="${cover}" alt="${title}" class="book-card-img w-full aspect-[2/3] object-cover">
+                        </div>
+                        <h3 class="font-bold text-sm mt-2">${title}</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">${author}</p>
+                        <button 
+                            onclick='saveToLibrary(${JSON.stringify(bookData)})'
+                            class="mt-2 text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 px-3 py-1 rounded-full hover:bg-blue-200 transition">
+                            Save to Library
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        };
+
+        const loadAllSections = async () => {
+            // Fetch New Releases in a specific genre
+            const newSciFi = await fetchBooks('subject:science fiction', 'newest');
+            renderBooks('scifi-grid', newSciFi);
+
+            // Fetch books by a specific, popular author
+            const authorBooks = await fetchBooks('inauthor:"Isaac Asimov"');
+            renderBooks('author-grid', authorBooks);
+
+            // Fetch Discover books based on your interests
+            const topics = ['data science fundamentals', 'machine learning with python', 'interactive fiction twine', 'game development basics'];
+            const randomTopic = topics[Math.floor(Math.random() * topics.length)];
+            const discoverBooks = await fetchBooks(randomTopic, 'relevance');
+            renderBooks('discover-grid', discoverBooks);
+        };
+
+        loadAllSections();
+    });
+
+    // --- SAVE TO LIBRARY FUNCTION (must be in global scope to be accessible by onclick) ---
+    const saveToLibrary = (bookData) => {
+        let library = JSON.parse(localStorage.getItem('bookLibrary') || '[]');
+        
+        if (library.some(book => book.id === bookData.id)) {
+            alert('This book is already in your library!');
+            return;
+        }
+        
+        library.push(bookData);
+        localStorage.setItem('bookLibrary', JSON.stringify(library));
+        alert(`"${bookData.title}" has been saved to your library!`);
+    };
+  </script>
+</body>
+</html>

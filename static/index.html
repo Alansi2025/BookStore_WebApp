@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" class=""> <!-- 'dark' class will be toggled here -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookStream | Your Online Bookstore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  
+  <style>
+    :root {
+      --primary-color: #3b82f6; /* blue-500 */
+      --accent-color: #2563eb; /* blue-600 */
+      --background-light: #f8fafc; /* slate-50 */
+      --background-dark: #0f172a; /* slate-900 */
+      --text-primary-light: #0f172a; /* slate-900 */
+      --text-secondary-light: #64748b; /* slate-500 */
+      --text-primary-dark: #f8fafc; /* slate-50 */
+      --text-secondary-dark: #94a3b8; /* slate-400 */
+      --card-bg-light: #ffffff;
+      --card-bg-dark: #1e293b; /* slate-800 */
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-light);
+      color: var(--text-primary-light);
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .dark body {
+      background-color: var(--background-dark);
+      color: var(--text-primary-dark);
+    }
+    
+    .skip-link {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        background: var(--primary-color);
+        color: white;
+        padding: 8px;
+        z-index: 100;
+        transition: top 0.3s;
+    }
+
+    .skip-link:focus {
+        top: 0;
+    }
+
+    /* Netflix-style Carousel */
+    .book-carousel-container {
+        position: relative;
+    }
+
+    .book-carousel {
+        display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        padding-bottom: 20px; /* Space for shadow */
+        gap: 1.25rem; /* 20px */
+    }
+
+    .book-carousel::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome, Safari, Opera */
+    }
+    
+    .book-card {
+        flex: 0 0 calc(50% - 10px); /* 2 cards on mobile */
+        aspect-ratio: 2 / 3;
+        border-radius: 0.5rem;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, z-index 0s 0.15s;
+        cursor: pointer;
+    }
+
+    @media (min-width: 640px) { /* sm */
+        .book-card { flex: 0 0 calc(33.33% - 14px); }
+    }
+    @media (min-width: 768px) { /* md */
+        .book-card { flex: 0 0 calc(25% - 15px); }
+    }
+    @media (min-width: 1024px) { /* lg */
+        .book-card { flex: 0 0 calc(20% - 16px); }
+    }
+    @media (min-width: 1280px) { /* xl */
+        .book-card { flex: 0 0 calc(16.66% - 17px); }
+    }
+
+    .book-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .book-card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 50%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1rem;
+        color: white;
+    }
+
+    .book-card:hover {
+        transform: scale(1.1);
+        z-index: 10;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    }
+    
+    .book-card:hover .book-card-overlay {
+        opacity: 1;
+    }
+    
+    .book-card:hover .book-card-img {
+        transform: scale(1.05);
+    }
+
+    .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 20;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease, background-color 0.3s ease;
+    }
+
+    .book-carousel-container:hover .carousel-btn {
+        opacity: 1;
+    }
+    
+    .carousel-btn:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .carousel-btn.left { left: 10px; }
+    .carousel-btn.right { right: 10px; }
+  </style>
+
+</head>
+<body class="antialiased">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      
+      <a href="index.html" class="text-2xl font-extrabold text-blue-500">
+        BookStream
+      </a>
+      
+      <div class="hidden sm:flex flex-grow max-w-lg mx-8 relative items-center">
+        <input type="text" id="search-input" placeholder="Search title or author..." class="w-full pl-10 pr-4 py-2 rounded-full bg-slate-100 dark:bg-slate-800 border border-transparent focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition">
+        <svg class="w-5 h-5 absolute left-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button id="theme-toggle" type="button" title="Toggle theme" class="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg id="theme-icon-light" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          <svg id="theme-icon-dark" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+        </button>
+        <button href="library.html" type="button" title="library" class="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <main id="main-content">
+    <section class="relative h-[60vh] min-h-[400px] flex items-center justify-center text-white text-center px-4">
+      <div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=2070&auto=format&fit=crop");'></div>
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative z-10 max-w-3xl">
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Find Your Next Story</h1>
+        <p class="text-lg md:text-xl mb-8 drop-shadow-md max-w-2xl mx-auto">From epic fantasies to thrilling mysteries, your next adventure is just a click away.</p>
+        <a href="search.html" class="bg-blue-500 text-white px-8 py-3 rounded-full font-bold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 transform hover:scale-105 inline-block no-underline" id="browse-books-btn" style="text-decoration: none;">Start Browsing</a>
+      </div>
+    </section>
+
+    
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div id="status-container" class="text-center my-8"></div>
+        <div id="browse-view">
+            <div id="carousel-container" class="space-y-12"></div>
+        </div>
+
+        <!-- Search View -->
+        <div id="search-view" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h2 id="search-results-title" class="text-2xl md:text-3xl font-bold">Search Results</h2>
+                <button id="clear-search-btn" class="text-blue-500 hover:underline font-semibold">← Back to Browse</button>
+            </div>
+            <div id="search-results-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+                <!-- Search results will be injected here -->
+            </div>
+            <p id="no-search-results" class="hidden text-center text-slate-500 dark:text-slate-400 mt-8 text-lg">No books found matching your search.</p>
+        </div>
+    </div>
+  </main>
+  
+  <!-- Book Details Modal -->
+  <div id="book-modal" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-4">
+    <div id="modal-content" class="bg-white dark:bg-card-bg-dark rounded-lg shadow-xl max-w-4xl w-full relative transition-all duration-300 mx-4 my-8 overflow-y-auto max-h-[90vh] grid grid-cols-1 md:grid-cols-3">
+        <button id="close-modal" class="absolute top-3 right-3 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full p-1 z-10">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+        </button>
+        <div class="md:col-span-1">
+          <img id="modal-image" alt="Book Cover" class="w-full h-full object-cover rounded-l-lg" src="https://placehold.co/400x600/1e293b/f8fafc?text=Book+Cover"/>
+        </div>
+        <div class="md:col-span-2 p-6 md:p-8">
+          <h1 id="modal-title" class="text-3xl lg:text-4xl font-extrabold mb-1">Book Title</h1>
+          <p id="modal-author" class="text-lg text-slate-500 dark:text-slate-400 mb-4">by Author Name</p>
+          <div class="flex items-center gap-2 mb-4">
+              <div id="modal-stars" class="flex text-yellow-400"></div>
+              <span id="modal-rating-value" class="font-bold text-slate-700 dark:text-slate-200"></span>
+          </div>
+          <p id="modal-description" class="leading-relaxed mb-6 text-slate-600 dark:text-slate-300">Loading description...</p>
+        </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="bg-slate-100 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="col-span-1">
+          <h3 class="text-2xl font-extrabold text-blue-500 mb-2">BookStream</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">&copy; 2025. All Rights Reserved.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Navigate</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+            <li><a href="index.html" class="hover:text-blue-500">Home</a></li>
+            <li><a href="index.html" class="hover:text-blue-500">Genres</a></li>
+            <li><a href="new-releases.html" class="hover:text-blue-500">New Releases</a></li>
+            <li><a href="new-releases.html" class="hover:text-blue-500">Bestsellers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">About</h4>
+          <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+            <li><a href="about.html" class="hover:text-blue-500">About Us</a></li>
+            <li><a href="about.html" class="hover:text-blue-500">Contact Us</a></li>
+            <li><a href="about.html" class="hover:text-blue-500">Privacy Policy</a></li>
+            <li><a href="about.html" class="hover:text-blue-500">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-3">Connect</h4>
+          <div class="flex space-x-4">
+             <a href="#" class="text-slate-500 hover:text-blue-500"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6C21.69,6.35 20.86,6.58 20,6.69C20.88,6.16 21.56,5.32 21.88,4.31C21.05,4.81 20.13,5.16 19.16,5.36C18.37,4.5 17.26,4 16,4C13.65,4 11.73,5.92 11.73,8.29C11.73,8.63 11.77,8.96 11.84,9.27C8.28,9.09 5.11,7.38 3,4.79C2.63,5.42 2.42,6.16 2.42,6.94C2.42,8.43 3.17,9.75 4.33,10.5C3.62,10.5 2.96,10.3 2.38,10C2.38,10 2.38,10 2.38,10.03C2.38,12.11 3.86,13.85 5.82,14.24C5.46,14.34 5.08,14.39 4.69,14.39C4.42,14.39 4.15,14.36 3.89,14.31C4.43,16 6,17.26 7.89,17.29C6.43,18.45 4.58,19.13 2.56,19.13C2.22,19.13 1.88,19.11 1.54,19.07C3.44,20.29 5.7,21 8.12,21C16,21 20.33,14.46 20.33,8.79C20.33,8.6 20.33,8.42 20.32,8.23C21.16,7.63 21.88,6.87 22.46,6Z" /></svg></a>
+             <a href="#" class="text-slate-500 hover:text-blue-500"><svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 9,21.5C9.08,21.5 9.12,21.45 9.12,21.37V19.35C7.2,19.72 6.7,18.55 6.55,18.05C6.45,17.75 6,17.15 5.5,16.9C5,16.65 4.5,16.2 5.5,16.2C6.4,16.2 6.8,17.1 7,17.35C7.9,18.85 9.5,18.4 10.1,18.15C10.2,17.5 10.45,17.1 10.7,16.85C8.35,16.6 5.85,15.6 5.85,11.95C5.85,10.85 6.2,9.95 6.8,9.25C6.7,9 6.4,8.1 6.9,6.7C6.9,6.7 7.75,6.45 9.1,7.4C9.9,7.2 10.75,7.05 11.6,7.05C12.45,7.05 13.3,7.2 14.1,7.4C15.45,6.45 16.3,6.7 16.3,6.7C16.8,8.1 16.5,9 16.4,9.25C17,9.95 17.35,10.85 17.35,11.95C17.35,15.6 14.85,16.6 12.5,16.85C12.85,17.15 13.15,17.75 13.15,18.6V21.37C13.15,21.45 13.2,21.5 13.28,21.5C17.41,20.17 20.28,16.42 20.28,12A10,10 0 0,0 12,2Z" /></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        const API_URL = 'http://127.0.0.1:5000';
+        let authToken = null;
+
+        // --- UI ELEMENT REFERENCES ---
+        const statusContainer = document.getElementById('status-container');
+        const browseView = document.getElementById('browse-view');
+        const carouselUiContainer = document.getElementById('carousel-container');
+        const searchView = document.getElementById('search-view');
+        const searchInput = document.getElementById('search-input');
+        const searchResultsTitle = document.getElementById('search-results-title');
+        const searchResultsGrid = document.getElementById('search-results-grid');
+        const noSearchResultsMessage = document.getElementById('no-search-results');
+        const clearSearchBtn = document.getElementById('clear-search-btn');
+        const themeToggle = document.getElementById('theme-toggle');
+        const lightIcon = document.getElementById('theme-icon-light');
+        const darkIcon = document.getElementById('theme-icon-dark');
+        const html = document.documentElement;
+        const modal = document.getElementById('book-modal');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        // --- CORE API & RENDERING LOGIC ---
+        
+        async function loginAndFetchBooks() {
+            statusContainer.innerHTML = `<p class="text-lg text-slate-500 dark:text-slate-400">Connecting to server and fetching books...</p>`;
+            browseView.classList.add('hidden');
+            searchView.classList.add('hidden');
+
+            try {
+                const loginResponse = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: 'admin', password: 'adminpass' })
+                });
+                if (!loginResponse.ok) throw new Error(`Login failed: ${loginResponse.statusText}`);
+                const { token } = await loginResponse.json();
+                authToken = token;
+
+                const booksResponse = await fetch(`${API_URL}/books?limit=100`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (!booksResponse.ok) throw new Error(`Failed to fetch books: ${booksResponse.statusText}`);
+                const { data: allBooks } = await booksResponse.json();
+                
+                const booksByGenre = allBooks.reduce((acc, book) => {
+                    const genre = book.genre || 'other';
+                    if (!acc[genre]) acc[genre] = [];
+                    acc[genre].push(book);
+                    return acc;
+                }, {});
+
+                statusContainer.innerHTML = '';
+                browseView.classList.remove('hidden');
+                renderCarousels(booksByGenre);
+
+            } catch (error) {
+                console.error('An error occurred during initialization:', error);
+                statusContainer.innerHTML = `
+                    <div class="bg-red-100 dark:bg-red-900/20 border border-red-400 dark:border-red-500/30 text-red-700 dark:text-red-300 px-4 py-3 rounded-lg" role="alert">
+                        <strong class="font-bold">Connection Error!</strong>
+                        <span class="block sm:inline ml-2">Could not connect to the backend. Please ensure the Python server is running at ${API_URL}.</span>
+                    </div>
+                `;
+            }
+        }
+        
+        function createBookCard(book) {
+             return `
+                <div class="book-card" data-id="${book._id}">
+                    <img src="${book.image_url || 'https://placehold.co/400x600/1e293b/f8fafc?text=No+Image'}" 
+                         alt="${book.title}" class="book-card-img" loading="lazy" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x600/1e293b/f8fafc?text=No+Image';">
+                    <div class="book-card-overlay">
+                        <h3 class="font-bold text-lg">${book.title}</h3>
+                        <p class="text-sm">${book.author}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCarousels(booksByGenre) {
+            carouselUiContainer.innerHTML = '';
+            for (const genre in booksByGenre) {
+                if (booksByGenre[genre].length === 0) continue;
+                const title = genre.charAt(0).toUpperCase() + genre.slice(1);
+                const section = document.createElement('section');
+                section.innerHTML = `
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">${title}</h2>
+                    <div class="book-carousel-container">
+                        <div id="${genre}-carousel" class="book-carousel">${booksByGenre[genre].map(createBookCard).join('')}</div>
+                        <button class="carousel-btn left" data-carousel="${genre}-carousel">‹</button>
+                        <button class="carousel-btn right" data-carousel="${genre}-carousel">›</button>
+                    </div>
+                `;
+                carouselUiContainer.appendChild(section);
+            }
+            addCarouselButtonListeners();
+        }
+
+        async function searchBooks(query) {
+            if (!authToken) return;
+            browseView.classList.add('hidden');
+            searchView.classList.remove('hidden');
+            searchResultsTitle.textContent = `Searching for "${query}"...`;
+            searchResultsGrid.innerHTML = '';
+            noSearchResultsMessage.classList.add('hidden');
+
+            try {
+                const response = await fetch(`${API_URL}/books?q=${encodeURIComponent(query)}&limit=50`, {
+                    headers: { 'Authorization': `Bearer ${authToken}` }
+                });
+                if (!response.ok) throw new Error(`Search failed: ${response.statusText}`);
+                const { data: books } = await response.json();
+
+                searchResultsTitle.textContent = `Results for "${query}"`;
+                if (books.length === 0) {
+                    noSearchResultsMessage.classList.remove('hidden');
+                } else {
+                    searchResultsGrid.innerHTML = books.map(createBookCard).join('');
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                searchResultsTitle.textContent = `Error searching for "${query}"`;
+            }
+        }
+        
+        // --- EVENT LISTENERS ---
+        
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            lightIcon.classList.toggle('hidden');
+            darkIcon.classList.toggle('hidden');
+        });
+
+        function addCarouselButtonListeners() {
+            document.querySelectorAll('.carousel-btn').forEach(button => {
+                const newButton = button.cloneNode(true);
+                button.parentNode.replaceChild(newButton, button);
+                newButton.addEventListener('click', () => {
+                    const carousel = document.getElementById(newButton.dataset.carousel);
+                    if (!carousel) return;
+                    const scrollAmount = carousel.clientWidth * 0.8;
+                    carousel.scrollBy({ left: newButton.classList.contains('left') ? -scrollAmount : scrollAmount, behavior: 'smooth' });
+                });
+            });
+        }
+
+        async function openModal(bookId) {
+            if (!authToken) return;
+            try {
+                const response = await fetch(`${API_URL}/books/${bookId}`, { headers: { 'Authorization': `Bearer ${authToken}` } });
+                if (!response.ok) throw new Error("Failed to fetch book details");
+                const bookData = await response.json();
+                
+                document.getElementById('modal-title').textContent = bookData.title;
+                document.getElementById('modal-author').textContent = `by ${bookData.author}`;
+                document.getElementById('modal-image').src = bookData.image_url || 'https://placehold.co/400x600/1e293b/f8fafc?text=No+Image';
+                document.getElementById('modal-description').textContent = bookData.description || 'No description available.';
+                
+                const ratingValue = bookData.rating || 0;
+                document.getElementById('modal-rating-value').textContent = ratingValue;
+                const starsContainer = document.getElementById('modal-stars');
+                starsContainer.innerHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    starsContainer.innerHTML += `<span>${i <= parseFloat(ratingValue) ? '★' : '☆'}</span>`;
+                }
+                
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            } catch (error) {
+                console.error("Error opening modal:", error);
+            }
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        document.querySelector('main').addEventListener('click', (e) => {
+            const card = e.target.closest('.book-card');
+            if (card && card.dataset.id) openModal(card.dataset.id);
+        });
+        
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && searchInput.value.trim()) {
+                searchBooks(searchInput.value.trim());
+            }
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchView.classList.add('hidden');
+            browseView.classList.remove('hidden');
+            searchInput.value = '';
+        });
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        
+        // --- INITIALIZE APP ---
+        loginAndFetchBooks();
+    });
+  </script>
+
+</body>
+</html>
+
